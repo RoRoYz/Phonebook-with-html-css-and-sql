@@ -10,9 +10,10 @@ $Dname = "Phonebook1";
 
 $conn = new mysqli($servername, $username, $password, $Dname);
 
-$mobile=$_POST["currentmobilenumber"];
+$fname=$_POST["firstname"];
+$lname=$_POST["lastname"];
 
-$sql = "SELECT * FROM contacts WHERE MOBILE='$mobile'";
+$sql = "SELECT * FROM contacts WHERE LAST_NAME='$lname' AND FIRST_NAME=' $fname'";
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
@@ -25,8 +26,8 @@ if($result->num_rows > 0){
 			  </br>	MOBILE: ".$row["MOBILE"]." 
 			  </br>	EMAIL: ".$row["EMAIL"];
 	}
-	echo "<form action=\"delete.php\" method=\"post\">	<input type=\"submit\" value=\"YES I'M SURE\">	</form>";	
-	echo "<form action=\"index.html\">	<input type=\"submit\" value=\"NO I CHANGE MY MIND\">	</form>";
+	echo "<form action='delete.php' method='post'>	<input type='submit' value='YES I'M SURE'>	</form>";	
+	echo "<form action='index.html'>	<input type='submit' value='NO I CHANGE MY MIND'>	</form>";
 	echo "ARE YOU REALLY SURE YOU WANT TO DELETE THIS DATA?";
 }
 else{

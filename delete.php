@@ -11,7 +11,10 @@ if($conn->connect_error){
 }
 echo "Connected successfully";
 
-$sql = "DELETE FROM contacts WHERE LAST_NAME = 'PATILUNA'";
+$fname=$_POST["firstname"];
+$lname=$_POST["lastname"];
+
+$sql = "DELETE FROM contacts WHERE LAST_NAME='$lname' AND FIRST_NAME=' $fname'";
 
 
 if($conn->query($sql) === TRUE){
