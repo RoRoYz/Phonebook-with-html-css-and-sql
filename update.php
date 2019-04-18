@@ -11,7 +11,10 @@ if($conn->connect_error){
 }
 echo "Connected successfully";
 
-$sql = "SELECT * FROM contacts WHERE LAST_NAME='DALIN'";
+$fname=$_POST["firstname"];
+$lname=$_POST["lastname"];
+
+$sql = "SELECT * FROM contacts WHERE LAST_NAME='$lname' AND FIRST_NAME='$fname'";
 $result = $conn->query($sql);
 
 $getdatacolumn = $_POST["datacolumn"];
@@ -36,14 +39,13 @@ else if($getdatacolumn=='email'){
 
 
 $changedata = $_POST["changedata"];
-$mobilenumber = $_POST["currentmobilenumber"];
 if($result->num_rows > 0){
-	$sql = "UPDATE contacts SET $datacolumn = '$changedata' WHERE MOBILE = '$mobilenumber'";
+	$sql = "UPDATE contacts SET $datacolumn = '$changedata' WHERE LAST_NAME='$lname' AND FIRST_NAME='$fname'";
 	$result = $conn->query($sql);
 	echo "<br>Data Changed Successfully";
 }
 else{
-	echo "Last Name Entered Not Found.";
+	echo "Name Entered Not Found.";
 }
 
 echo "<br><form action=\"index.html\">";

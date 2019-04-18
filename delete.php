@@ -14,7 +14,7 @@ echo "Connected successfully";
 $fname=$_POST["firstname"];
 $lname=$_POST["lastname"];
 
-$sql = "DELETE FROM contacts WHERE LAST_NAME='$lname' AND FIRST_NAME=' $fname'";
+$sql = "DELETE FROM contacts WHERE LAST_NAME='$lname' AND FIRST_NAME='$fname'";
 
 
 if($conn->query($sql) === TRUE){
